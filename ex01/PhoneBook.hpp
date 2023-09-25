@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ogorfti <ogorfti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 18:53:12 by ogorfti           #+#    #+#             */
-/*   Updated: 2023/09/24 13:05:26 by ogorfti          ###   ########.fr       */
+/*   Created: 2023/09/24 12:44:27 by ogorfti           #+#    #+#             */
+/*   Updated: 2023/09/25 12:53:30 by ogorfti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
-int main(int ac, char **av)
+#define ADD "ADD"
+#define SEARCH "SEARCH"
+#define EXIT "EXIT"
+#define COLOR_YELLOW "\033[33m"
+#define COLOR_RESET "\033[0m"
+
+#include "Contact.hpp"
+
+class PhoneBook
 {
-	int i;
-	int j;
+	private:
+		Contact array[8];
+		int nbr;
+	public:
+		PhoneBook();
+		void	add_contact(Contact contact);
+		void	print_contact(void);
+		int		get_index(void);
+		void	contact_index(void);
+};
 
-	i = 1;
-	if (ac > 1)
-	{
-		while (av[i])
-		{
-			j = 0;
-			while (av[i][j])
-			{
-				av[i][j] = std::toupper(av[i][j]);
-				std::cout << av[i][j];
-				j++;
-			}
-			i++;
-		}
-	}
-	else
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	std::cout << std::endl;
-	return (0);
-}
+#endif

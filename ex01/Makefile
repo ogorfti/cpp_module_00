@@ -5,30 +5,34 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ogorfti <ogorfti@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/23 18:53:09 by ogorfti           #+#    #+#              #
-#    Updated: 2023/09/24 10:42:54 by ogorfti          ###   ########.fr        #
+#    Created: 2023/09/24 15:27:23 by ogorfti           #+#    #+#              #
+#    Updated: 2023/09/25 11:38:56 by ogorfti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
+NAME = phonebook
 
-SRCS = megaphone.cpp
+SRCS = phonebook.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-CFLAGS =  -Wall -Wextra -Werror -std=c++98
+CXXFLAGS =  -Wall -Wextra -Werror -std=c++98
+
+CH = Contact.hpp
+
+PH = PhoneBook.hpp
 
 CC = c++
 
 RM = rm -f
 
-%.o : %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+%.o : %.cpp $(CH) $(PH)
+	$(CC) $(CXXFLAGS) -c $< -o $@
 
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 clean : 
 	$(RM) $(OBJS)
